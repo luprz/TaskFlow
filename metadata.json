@@ -1,0 +1,5 @@
+{
+  "name": "TaskFlow",
+  "description": "A feature-based React application mimicking a Next.js/Shadcn architecture for task management, including Auth and Dashboard screens.",
+  "requestFramePermissions": []
+}
