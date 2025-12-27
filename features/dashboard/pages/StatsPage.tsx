@@ -52,22 +52,25 @@ export const StatsPage = () => {
   return (
     <div className="p-8 max-w-7xl mx-auto space-y-6">
       {/* Date Filter */}
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold tracking-tight">Dashboard de Estadísticas</h2>
-        <Button variant="outline" className="gap-2">
-            <Calendar size={16} /> Dic 2025
+      <div className="flex justify-between items-end mb-4">
+        <div>
+            <h2 className="text-2xl font-bold tracking-tight">Estadísticas de Rendimiento</h2>
+            <p className="text-sm text-muted-foreground">Monitorea el progreso de tu equipo en tiempo real.</p>
+        </div>
+        <Button variant="outline" className="gap-2 h-9 border-muted-foreground/20 hover:bg-muted/50 transition-all">
+            <Calendar size={14} /> Dic 2025
         </Button>
       </div>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Total Actividades</CardTitle>
-            <ClipboardList className="h-4 w-4 text-muted-foreground" />
+        <Card className="hover:shadow-md transition-shadow">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1">
+            <CardTitle className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Total Actividades</CardTitle>
+            <ClipboardList className="h-4 w-4 text-muted-foreground/70" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">142</div>
+            <div className="text-3xl font-bold tracking-tighter">142</div>
             <p className="text-xs text-muted-foreground pt-1 flex items-center">
               <span className="text-green-600 font-medium flex items-center mr-1">
                 <TrendingUp size={12} className="mr-0.5" /> +20.1%

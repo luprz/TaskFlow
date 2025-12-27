@@ -27,8 +27,8 @@ export const DashboardLayout = () => {
   return (
     <div className="flex h-screen overflow-hidden bg-background">
       {/* Sidebar */}
-      <aside className="w-64 border-r bg-muted/20 flex flex-col h-full">
-        <div className="h-14 flex items-center px-6 border-b">
+      <aside className="w-64 border-r bg-muted/5 flex flex-col h-full transition-all">
+        <div className="h-16 flex items-center px-6 border-b bg-background/50">
           <div className="flex items-center gap-2 font-bold text-lg">
             <div className="h-6 w-6 bg-primary rounded-md flex items-center justify-center text-primary-foreground">
               <LayoutGrid size={14} />
@@ -57,7 +57,12 @@ export const DashboardLayout = () => {
 
           <NavLink 
             to="/dashboard/pending" 
-            className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md text-muted-foreground hover:bg-secondary/50 hover:text-foreground transition-colors"
+            className={({ isActive }) => cn(
+              "flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md transition-colors",
+              isActive 
+                ? "bg-secondary text-foreground" 
+                : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
+            )}
           >
             <Inbox size={18} />
             Pendientes
@@ -136,9 +141,9 @@ export const DashboardLayout = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto bg-background">
-        <header className="h-14 flex items-center justify-between px-8 border-b sticky top-0 bg-background/80 backdrop-blur-sm z-10">
-          <h1 className="text-xl font-bold tracking-tight">
+      <main className="flex-1 overflow-y-auto bg-background/50">
+        <header className="h-16 flex items-center justify-between px-8 border-b sticky top-0 bg-background/60 backdrop-blur-md z-10 transition-all">
+          <h1 className="text-lg font-semibold tracking-tight">
              {/* Dynamic Title Logic could go here based on route */}
              TaskFlow Dashboard
           </h1>

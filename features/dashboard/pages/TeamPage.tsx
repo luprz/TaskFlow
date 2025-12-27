@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserPlus, Edit2, Trash2, X } from 'lucide-react';
+import { UserPlus, Edit2, Trash2, X, ChevronDown } from 'lucide-react';
 import { Button } from '../../../components/ui/button';
 import { Input } from '../../../components/ui/input';
 import { Card } from '../../../components/ui/card';
@@ -109,35 +109,47 @@ export const TeamPage = () => {
 
             {/* Custom Modal */}
             {isModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-                    <div className="bg-background p-6 rounded-lg shadow-xl w-full max-w-md border animate-in fade-in zoom-in duration-200">
-                        <div className="flex justify-between items-center mb-4">
-                            <h3 className="text-lg font-semibold">Agregar Nuevo Miembro</h3>
-                            <Button variant="ghost" size="sm" onClick={() => setIsModalOpen(false)}>
-                                <X size={20} />
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in duration-300 w-screen h-screen top-0 left-0 m-0" style={{ marginTop: '0px' }}>
+                    <div className="bg-background p-8 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] w-full max-w-md border border-border/50 animate-in zoom-in-95 duration-200">
+                        <div className="flex justify-between items-center mb-6">
+                            <div>
+                                <h3 className="text-xl font-bold tracking-tight">Agregar Nuevo Miembro</h3>
+                                <p className="text-sm text-muted-foreground">Ingresa los detalles del nuevo integrante.</p>
+                            </div>
+                            <Button variant="ghost" size="icon" className="rounded-full h-8 w-8" onClick={() => setIsModalOpen(false)}>
+                                <X size={18} />
                             </Button>
                         </div>
-                        <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); setIsModalOpen(false); }}>
+                        <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); setIsModalOpen(false); }}>
                             <div className="space-y-2">
-                                <label className="text-sm font-medium">Nombre</label>
-                                <Input placeholder="Nombre completo" />
+                                <label className="text-sm font-semibold px-1">Nombre Completo</label>
+                                <Input placeholder="Ej: Maria Gonzalez" className="bg-muted/30 border-muted-foreground/20 focus:border-primary/50 transition-all" />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-medium">Email</label>
-                                <Input type="email" placeholder="email@empresa.com" />
+                                <label className="text-sm font-semibold px-1">Correo Electrónico</label>
+                                <Input type="email" placeholder="maria.g@empresa.com" className="bg-muted/30 border-muted-foreground/20 focus:border-primary/50 transition-all" />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-medium">Rol</label>
-                                <select className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
-                                    <option value="">Seleccionar rol</option>
-                                    <option value="Gerente">Gerente</option>
-                                    <option value="Desarrollador">Desarrollador</option>
-                                    <option value="Marketing">Marketing</option>
-                                </select>
+                                <label className="text-sm font-semibold px-1">Rol en el Equipo</label>
+                                <div className="relative">
+                                    <select className="flex h-10 w-full rounded-md border border-muted-foreground/20 bg-muted/30 px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-all appearance-none cursor-pointer hover:bg-muted/50">
+                                        <option value="">Seleccionar rol</option>
+                                        <option value="Gerente">Gerente</option>
+                                        <option value="Desarrollador">Desarrollador</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="QA Tester">QA Tester</option>
+                                        <option value="Diseñador UX">Diseñador UX</option>
+                                    </select>
+                                    <ChevronDown className="absolute right-3 top-2.5 h-4 w-4 text-muted-foreground pointer-events-none" />
+                                </div>
                             </div>
-                            <div className="flex justify-end gap-3 pt-2">
-                                <Button type="button" variant="outline" onClick={() => setIsModalOpen(false)}>Cancelar</Button>
-                                <Button type="submit">Guardar</Button>
+                            <div className="flex justify-end gap-3 pt-4">
+                                <Button type="button" variant="ghost" onClick={() => setIsModalOpen(false)} className="px-6 hover:bg-muted">
+                                    Cancelar
+                                </Button>
+                                <Button type="submit" className="px-8 shadow-lg shadow-primary/20 bg-primary hover:bg-primary/90 transition-all transform active:scale-95">
+                                    Guardar Miembro
+                                </Button>
                             </div>
                         </form>
                     </div>
